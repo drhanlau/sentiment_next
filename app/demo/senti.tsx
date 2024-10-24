@@ -5,14 +5,13 @@ import ProgressBar from './progressbar';
 
 const Senti: React.FC = () => {
 
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  // const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [inputText, setInputText] = useState('');
   const [progressValue, setProgressValue] = useState([0]);
 
     const handleAnalyzeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
 
       event.preventDefault(); // Prevent the default button behavior
-      setIsAnalyzing(true);
       try {
         const response = await fetch(`/api/senti?text=${encodeURIComponent(inputText)}`);
         const data = await response.json();
@@ -24,7 +23,6 @@ const Senti: React.FC = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
         } finally {
-            setIsAnalyzing(false);
         }
     };
 

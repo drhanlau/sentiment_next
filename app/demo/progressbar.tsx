@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Slider } from '@/components/ui/slider';
 
 const ProgressBar = ({ value: propValue }) => {
   const [value, setValue] = useState(propValue || [0]); // Use propValue or default to [0]
