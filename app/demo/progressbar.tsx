@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
-const ProgressBar = ({ value: propValue }) => {
+const ProgressBar = ({ value: propValue }: { value: number[] }) => {
   const [value, setValue] = useState(propValue || [0]); // Use propValue or default to [0]
   // Add this useEffect to update the internal state when propValue changes
   useEffect(() => {
@@ -9,7 +9,7 @@ const ProgressBar = ({ value: propValue }) => {
   }, [propValue]);
 
   // Calculate colors based on slider value
-  const getColors = (val) => {
+  const getColors = (val: number[]) => {
     const normalizedValue = val[0];
     const neutralGray = 'rgb(200, 200, 200)';
 
