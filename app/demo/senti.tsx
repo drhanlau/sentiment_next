@@ -57,6 +57,14 @@ const Senti: React.FC = () => {
                   <ProgressBar value={progressValue} />
                 </div>
 
+            <div className="text-center text-gray-500 text-sm mt-4 flex justify-center items-center">
+              <a href="https://thelead.io" target="_blank" rel="noopener noreferrer" className="mr-2">
+                <img src="/lead-logo-flat-no-word.png" alt="LEAD Logo" className="h-8 inline-block" />
+              </a>
+              <p>&copy; {new Date().getFullYear()} LEAD. All rights reserved.</p>
+            </div>
+
+
               </div>
             </div>
           </div>
