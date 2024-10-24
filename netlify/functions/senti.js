@@ -6,15 +6,25 @@
 // of your site. Netlify Functions will handle the rest for you.
 
 const vader = require("vader-sentiment");
-const input = "VADER is very smart, handsome, and funny";
 
 exports.handler = async (event) => {
-  const subject = event.queryStringParameters.name || "World";
+  let input;
+  if (event.queryStringParameters && event.queryStringParameters.text) {
+    input = event.queryStringParameters.text;
+  } else {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Please provide an input text" }),
+    };
+  }
+
   const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
 
   return {
     statusCode: 200,
-    // body: `Hello ${subject}!`,
-    body: JSON.stringify(intensity),
+    headers: {
+      "Content-Type": "application/json", // Set the Content-Type header to application/json
+    },
+    body: JSON.stringify(intensity), // Convert the object to a JSON string
   };
 };
